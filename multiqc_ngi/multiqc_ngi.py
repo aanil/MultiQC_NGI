@@ -177,7 +177,7 @@ class ngi_metadata():
         for x, data in enumerate(report.general_stats_data):
             new_d = {}
             for s_name in report.general_stats_data[x].keys():
-                m = re.search(r'(P\d{3,5}_\d{3,6})', s_name)
+                m = re.search(r'(P\d{3,}_\d{3,})', s_name)
                 if m:
                     s = m.group(1)
                 else:
@@ -206,7 +206,7 @@ class ngi_metadata():
                 pass
         pids = dict()
         for s_name in self.s_names:
-            m = re.search(r'(P\d{3,5})', s_name)
+            m = re.search(r'(P\d{3,})', s_name)
             if m:
                 try:
                     pids[m.group(1)].append(s_name)
@@ -540,7 +540,7 @@ class ngi_metadata():
             doc['samples'] = dict()
         for key, d in report.saved_raw_data.items():
             for s_name in d:
-                m = re.search(r'(P\d{3,5}_\d{1,6})', s_name)
+                m = re.search(r'(P\d{3,}_\d{3,})', s_name)
                 if m:
                     sid = m.group(1)
                 else:
